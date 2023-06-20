@@ -43,7 +43,7 @@ jobs:
         dockerfile: docker/Dockerfile
         platforms: linux/amd64
         push: ${{ github.event_name != 'pull_request' }}
-        tags: lcas.lincoln.ac.uk/${{ env.GITHUB_REPOSITORY }}:${{ env.BRANCH }}
+        tags: lcas.lincoln.ac.uk/${{ GITHUB_REPOSITORY }}:${{ env.BRANCH }}
         build-args: |
             BRANCH=${{ env.BRANCH }}
             GITHUB_TOKEN=${{secrets.GITHUB_TOKEN}}
