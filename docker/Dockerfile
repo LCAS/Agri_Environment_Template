@@ -6,7 +6,7 @@ ENV WORKSPACE="$HOME/${WORKSPACE}"
 
 # switch to root user
 
-COPY docker/install.sh /tmp/install.sh
+COPY install.sh /tmp/install.sh
 
 USER 0
 # run relevant root commands here
@@ -19,9 +19,7 @@ WORKDIR $HOME
 RUN bash -c "source /opt/ros/noetic/setup.bash; rosdep update"
 
 # copy the main rosinstall file
-COPY docker/checkout_and_build.sh /tmp/checkout_and_build.sh
-
-COPY . ${WORKSPACE}
+COPY checkout_and_build.sh /tmp/checkout_and_build.sh
 
 RUN bash /tmp/checkout_and_build.sh ${WORKSPACE} "some argument" "${GITHUB_TOKEN}"
 
